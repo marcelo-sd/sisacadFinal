@@ -8,11 +8,14 @@ namespace SisacadFinal.Profiles
     {
         public AllProfiles()
         {
-            CreateMap<Estudiantes, EstudiantesDto>();
-            CreateMap<Profesores, ProfesoresDto>();
-            CreateMap<ProfesoresDto, Profesores>();
+            CreateMap<Estudiante, EstudiantesDto>();
+            CreateMap<Profesore, ProfesoresDto>();
+            CreateMap<ProfesoresDto, Profesore>();
             CreateMap < AdministracionDto, Administracion>();
             CreateMap<Administracion, AdministracionDto>();
+            CreateMap<CarrerasDto, Carrera>();
+            CreateMap<Carrera, CarrerasDto>();
+
             // Agrega más mapeos según sea necesario
         }
     }

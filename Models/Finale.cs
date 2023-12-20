@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SisacadFinal.Models;
 
-public partial class Finales
+public partial class Finale
 {
     public int? EstudianteId { get; set; }
 
@@ -11,7 +11,7 @@ public partial class Finales
 
     public DateTime? Fecha { get; set; }
 
-    public virtual Estudiantes? Estudiante { get; set; }
+    public virtual Estudiante? Estudiante { get; set; }
 
-    public virtual Materias? Materia { get; set; }
+    public virtual Materia? Materia { get; set; }
 }

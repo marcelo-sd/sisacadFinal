@@ -9,7 +9,7 @@ public partial class MatriculacionesCarrerasEstudiante
 
     public int? CarreraId { get; set; }
 
-    public virtual Carreras? Carrera { get; set; }
+    public virtual Carrera? Carrera { get; set; }
 
-    public virtual Estudiantes? Estudiante { get; set; }
+    public virtual Estudiante? Estudiante { get; set; }
 }
