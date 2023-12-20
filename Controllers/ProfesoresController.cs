@@ -54,7 +54,7 @@ namespace SisacadFinal.Controllers
         {
             
            
-                Profesores oProfesor= _dbContex.Profesores.Find(id);
+                Profesore oProfesor= _dbContex.Profesores.Find(id);
             if (oProfesor == null)
             {
                 return StatusCode(StatusCodes.Status404NotFound, new {message="Profesor no encontrado"});
@@ -81,7 +81,7 @@ namespace SisacadFinal.Controllers
             try
             {
 
-                var objeto = _mapper.Map<Profesores>(objetoDto);
+                var objeto = _mapper.Map<Profesore>(objetoDto);
                 _dbContex.Profesores.Add(objeto);
                 //var profesorDto = _mapper.Map<ProfesoresDto>(objeto);
                 //_dbContex.Profesores.Add(profesorDto);
@@ -104,12 +104,12 @@ namespace SisacadFinal.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [Route("EditarProfesor")]
-        public IActionResult EditarProfesor([FromBody] Profesores objeto)
+        public IActionResult EditarProfesor([FromBody] Profesore objeto)
         {
 
 
 
-            Profesores oProfesor = _dbContex.Profesores.Find(objeto.Id);
+            Profesore oProfesor = _dbContex.Profesores.Find(objeto.Id);
             if (oProfesor == null)
             {
                 return BadRequest("Profesor no encontrado");
@@ -154,7 +154,7 @@ namespace SisacadFinal.Controllers
         {
 
 
-            Profesores oProfesor= _dbContex.Profesores.Find(Id);
+            Profesore  oProfesor= _dbContex.Profesores.Find(Id);
             if (oProfesor == null)
             {
                 return BadRequest("Profesor no encontrado");

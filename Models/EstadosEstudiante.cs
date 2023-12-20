@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace SisacadFinal.Models;
 
-public partial class Carreras
+public partial class EstadosEstudiante
 {
     public int Id { get; set; }
 
-    public string? Nombre { get; set; }
+    public string? Estado { get; set; }
 }

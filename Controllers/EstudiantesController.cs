@@ -64,7 +64,7 @@ namespace SisacadFinal.Controllers
                 return BadRequest();
             }
             else { 
-            Estudiantes oEstudiante = _dbContex.Estudiantes.Find(IdEstudiante);
+            Estudiante oEstudiante = _dbContex.Estudiantes.Find(IdEstudiante);
             if (oEstudiante == null)
             {
                 return BadRequest("Estudiante no encontrado");
@@ -87,7 +87,7 @@ namespace SisacadFinal.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
         [Route("GuardarEstudiante")]
-        public IActionResult GuardarEstudiante([FromBody]Estudiantes objeto)
+        public IActionResult GuardarEstudiante([FromBody]Estudiante objeto)
         {
             try
             {
@@ -110,7 +110,7 @@ namespace SisacadFinal.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [Route("EditarEstudiante")]
-        public IActionResult EditarEstudiante([FromBody] Estudiantes objeto)
+        public IActionResult EditarEstudiante([FromBody] Estudiante objeto)
         {
         //    if (objeto.Id == 0)
         //    {
@@ -119,7 +119,7 @@ namespace SisacadFinal.Controllers
 
 
             
-                Estudiantes oEstudiante = _dbContex.Estudiantes.Find(objeto.Id);
+                Estudiante oEstudiante = _dbContex.Estudiantes.Find(objeto.Id);
                 if (oEstudiante == null)
                 {
                     return BadRequest("Estudiante no encontrado");
@@ -162,7 +162,7 @@ namespace SisacadFinal.Controllers
         {
 
 
-            Estudiantes oEstudiante = _dbContex.Estudiantes.Find(Id);
+            Estudiante oEstudiante = _dbContex.Estudiantes.Find(Id);
             if (oEstudiante == null)
             {
                 return BadRequest("Estudiante no encontrado");

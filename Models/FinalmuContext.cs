@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using SisacadFinal.Models.Dto;
 
 namespace SisacadFinal.Models;
 
@@ -18,27 +17,30 @@ public partial class FinalmuContext : DbContext
 
     public virtual DbSet<Administracion> Administracions { get; set; }
 
-    public virtual DbSet<Carreras> Carreras { get; set; }
+    public virtual DbSet<Carrera> Carreras { get; set; }
 
-    public virtual DbSet<EstadosEstudiantes> EstadosEstudiantes { get; set; }
+    public virtual DbSet<EstadosEstudiante> EstadosEstudiantes { get; set; }
 
-    public virtual DbSet<Estudiantes> Estudiantes { get; set; }
+    public virtual DbSet<Estudiante> Estudiantes { get; set; }
 
-    public virtual DbSet<Finales> Finales { get; set; }
+    public virtual DbSet<Finale> Finales { get; set; }
 
-    public virtual DbSet<Materias> Materias { get; set; }
+    public virtual DbSet<Materia> Materias { get; set; }
 
-    public virtual DbSet<Matriculaciones> Matriculaciones { get; set; }
+    public virtual DbSet<Matriculacione> Matriculaciones { get; set; }
 
     public virtual DbSet<MatriculacionesCarrerasEstudiante> MatriculacionesCarrerasEstudiantes { get; set; }
 
     public virtual DbSet<MatriculacionesCarrerasProfesore> MatriculacionesCarrerasProfesores { get; set; }
 
-    public virtual DbSet<Notas> Notas { get; set; }
+    public virtual DbSet<Nota> Notas { get; set; }
 
-    public virtual DbSet<Profesores> Profesores { get; set; }
+    public virtual DbSet<Profesore> Profesores { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=FINALMU;Trusted_Connection=True;TrustServerCertificate=True;");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Administracion>(entity =>
@@ -66,7 +68,7 @@ public partial class FinalmuContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<Carreras>(entity =>
+        modelBuilder.Entity<Carrera>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Carreras__3214EC279D8CBC9F");
 
@@ -76,7 +78,7 @@ public partial class FinalmuContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<EstadosEstudiantes>(entity =>
+        modelBuilder.Entity<EstadosEstudiante>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__EstadosE__3214EC279D9FE514");
 
@@ -88,7 +90,7 @@ public partial class FinalmuContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<Estudiantes>(entity =>
+        modelBuilder.Entity<Estudiante>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Estudian__3214EC273A6876F6");
 
@@ -108,7 +110,7 @@ public partial class FinalmuContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<Finales>(entity =>
+        modelBuilder.Entity<Finale>(entity =>
         {
             entity.HasNoKey();
 
@@ -125,22 +127,27 @@ public partial class FinalmuContext : DbContext
                 .HasConstraintName("FK__Finales__Materia__5CD6CB2B");
         });
 
-        modelBuilder.Entity<Materias>(entity =>
+        modelBuilder.Entity<Materia>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Materias__3214EC2746046E21");
 
             entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.IdCarrera).HasColumnName("idCarrera");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.ProfesorId).HasColumnName("ProfesorID");
+
+            entity.HasOne(d => d.IdCarreraNavigation).WithMany(p => p.Materia)
+                .HasForeignKey(d => d.IdCarrera)
+                .HasConstraintName("FK__Materias__idCarr__787EE5A0");
 
             entity.HasOne(d => d.Profesor).WithMany(p => p.Materia)
                 .HasForeignKey(d => d.ProfesorId)
                 .HasConstraintName("FK__Materias__Profes__5165187F");
         });
 
-        modelBuilder.Entity<Matriculaciones>(entity =>
+        modelBuilder.Entity<Matriculacione>(entity =>
         {
             entity.HasNoKey();
 
@@ -188,7 +195,7 @@ public partial class FinalmuContext : DbContext
                 .HasConstraintName("FK__Matricula__Profe__59063A47");
         });
 
-        modelBuilder.Entity<Notas>(entity =>
+        modelBuilder.Entity<Nota>(entity =>
         {
             entity.HasNoKey();
 
@@ -211,7 +218,7 @@ public partial class FinalmuContext : DbContext
                 .HasConstraintName("FK__Notas__MateriaID__619B8048");
         });
 
-        modelBuilder.Entity<Profesores>(entity =>
+        modelBuilder.Entity<Profesore>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Profesor__3214EC2790699FD4");
 

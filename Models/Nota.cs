@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SisacadFinal.Models;
 
-public partial class Notas
+public partial class Nota
 {
     public int? EstudianteId { get; set; }
 
@@ -15,9 +15,9 @@ public partial class Notas
 
     public int? EstadoId { get; set; }
 
-    public virtual EstadosEstudiantes? Estado { get; set; }
+    public virtual EstadosEstudiante? Estado { get; set; }
 
-    public virtual Estudiantes? Estudiante { get; set; }
+    public virtual Estudiante? Estudiante { get; set; }
 
-    public virtual Materias? Materia { get; set; }
+    public virtual Materia? Materia { get; set; }
 }

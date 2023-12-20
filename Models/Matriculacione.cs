@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace SisacadFinal.Models;
 
-public partial class Matriculaciones
+public partial class Matriculacione
 {
     public int? EstudianteId { get; set; }
 
     public int? MateriaId { get; set; }
 
-    public virtual Estudiantes? Estudiante { get; set; }
+    public virtual Estudiante? Estudiante { get; set; }
 
-    public virtual Materias? Materia { get; set; }
+    public virtual Materia? Materia { get; set; }
 }
