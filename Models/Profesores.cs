@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace SisacadFinal.Models;
 
@@ -19,5 +20,6 @@ public partial class Profesores
 
     public DateTime? FechaCreacion { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Materias> Materia { get; set; } = new List<Materias>();
 }
