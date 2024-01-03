@@ -17,5 +17,7 @@ public partial class Materia
 
     public virtual Carrera? IdCarreraNavigation { get; set; }
 
+    public virtual ICollection<Matriculacione> Matriculaciones { get; set; } = new List<Matriculacione>();
+
     public virtual Profesore? Profesor { get; set; }
 }

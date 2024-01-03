@@ -38,9 +38,8 @@ public partial class FinalmuContext : DbContext
     public virtual DbSet<Profesore> Profesores { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=FINALMU;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -150,20 +149,20 @@ public partial class FinalmuContext : DbContext
 
         modelBuilder.Entity<Matriculacione>(entity =>
         {
-            entity.HasKey(e => e.MatriculacioneID); // Clave primaria
+            entity.HasKey(e => e.MatriculacioneId).HasName("PK__Matricul__C36C8A612397E32E");
 
+            entity.Property(e => e.MatriculacioneId).HasColumnName("MatriculacioneID");
             entity.Property(e => e.EstudianteId).HasColumnName("EstudianteID");
             entity.Property(e => e.MateriaId).HasColumnName("MateriaID");
 
-            entity.HasOne(d => d.Estudiante).WithMany()
+            entity.HasOne(d => d.Estudiante).WithMany(p => p.Matriculaciones)
                 .HasForeignKey(d => d.EstudianteId)
                 .HasConstraintName("FK__Matricula__Estud__534D60F1");
 
-            entity.HasOne(d => d.Materia).WithMany()
+            entity.HasOne(d => d.Materia).WithMany(p => p.Matriculaciones)
                 .HasForeignKey(d => d.MateriaId)
                 .HasConstraintName("FK__Matricula__Mater__5441852A");
         });
-
 
         modelBuilder.Entity<MatriculacionesCarrerasEstudiante>(entity =>
         {
