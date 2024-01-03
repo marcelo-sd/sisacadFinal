@@ -5,6 +5,8 @@ C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Sis
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\SisacadFinal.runtimeconfig.json
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\SisacadFinal.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\SisacadFinal.pdb
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Humanizer.dll
@@ -74,5 +76,3 @@ C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\obj\Debug\net7.0\ref
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\obj\Debug\net7.0\SisacadFinal.pdb
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\obj\Debug\net7.0\SisacadFinal.genruntimeconfig.cache
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\obj\Debug\net7.0\ref\SisacadFinal.dll
-C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\AutoMapper.dll
-C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -69,9 +69,16 @@ namespace SisacadFinal.Controllers
             }
             catch (Exception ex)
             {
-                // return StatusCode(StatusCodes.Status200OK, new { ex.Message });
-                return BadRequest(new { message = ex.Message });
+                string innerMessage = "";
+
+                if (ex.InnerException != null)
+                {
+                    innerMessage = ex.InnerException.Message;
+                }
+
+                return BadRequest(new { message = ex.Message, innerMessage = innerMessage });
             }
+
 
         }
 
