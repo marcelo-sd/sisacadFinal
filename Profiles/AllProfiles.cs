@@ -15,6 +15,11 @@ namespace SisacadFinal.Profiles
             CreateMap<Administracion, AdministracionDto>();
             CreateMap<CarrerasDto, Carrera>();
             CreateMap<Carrera, CarrerasDto>();
+            CreateMap<Materia, MateriasDto>();
+            CreateMap<MateriasDto, Materia>();
+            CreateMap<Matriculacione, MatriculacionesDto>();
+            CreateMap<MatriculacionesDto, Matriculacione>();
+
 
             // Agrega más mapeos según sea necesario
         }
