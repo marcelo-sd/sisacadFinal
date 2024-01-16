@@ -25,6 +25,33 @@ namespace SisacadFinal.Controllers
             _mapper = mapper;
         }
 
+
+        // GET: api/Materias
+      
+
+        // GET: api/Materias
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<string>>> GetNombresMaterias(int id)
+        {
+            var nombresMaterias = await _dbContex.Matriculaciones
+                .Where(m => m.EstudianteId == id)
+                .Select(m => m.Materia.Nombre)
+                .ToListAsync();
+
+            if (nombresMaterias == null)
+            {
+                return NotFound();
+            }
+
+            return nombresMaterias;
+        }
+
+
+
+
+
+
+
         [HttpGet]
         [ProducesResponseType(200)]
         [Route("Lista")]

@@ -2,21 +2,23 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SisacadFinal.Models;
 using SisacadFinal.Models.Dto;
+using SisacadFinal.Models;
 
 namespace SisacadFinal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("ReglasCors")]
-    public class MatriCarreraEstudiantesController : ControllerBase
+    public class MatriculacionesCaerrerasProfesorController : ControllerBase
     {
+
+
         public readonly FinalmuContext _dbContex;
         private readonly IMapper _mapper;
 
 
-        public MatriCarreraEstudiantesController(FinalmuContext _context, IMapper mapper)
+        public MatriculacionesCaerrerasProfesorController(FinalmuContext _context, IMapper mapper)
         {
             _dbContex = _context ?? throw new ArgumentNullException();
             _mapper = mapper;
@@ -30,14 +32,14 @@ namespace SisacadFinal.Controllers
         [Route("ListaMatriculacionesCarreraEst")]
         public IActionResult ListaMatriculacionesCarreraEst()
         {
-            List<MatriculacionesCarrerasEstudiante> lista = new List<MatriculacionesCarrerasEstudiante>();
+            List<MatriculacionesCarrerasProfesore> lista = new List<MatriculacionesCarrerasProfesore>();
             try
             {
 
-                var matriculaciones = _dbContex.MatriculacionesCarrerasEstudiantes.ToList();
+                var matriculaciones = _dbContex.MatriculacionesCarrerasProfesores.ToList();
 
                 // Usa AutoMapper para mapear la lista de estudiantes a una lista de EstudiantesDto
-                lista = _mapper.Map<List<MatriculacionesCarrerasEstudiante>>(matriculaciones);
+                lista = _mapper.Map<List<MatriculacionesCarrerasProfesore>>(matriculaciones);
 
 
                 // lista = _dbContex.EstudiantesDto.ToList();
@@ -54,14 +56,14 @@ namespace SisacadFinal.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        [Route("GuardarMatriculacionCarrEst")]
-        public IActionResult GuardarMatriculacionCarrEst([FromBody] MatriCarreraEstDto objetoDto)
+        [Route("GuardarMatriculacionCarreraProfesor")]
+        public IActionResult GuardarMatriculacionCarreraProfesor([FromBody] MatriCarreProfesorDto objetoDto)
         {
             try
             {
 
-                var objeto = _mapper.Map<MatriculacionesCarrerasEstudiante>(objetoDto);
-                _dbContex.MatriculacionesCarrerasEstudiantes.Add(objeto);
+                var objeto = _mapper.Map<MatriculacionesCarrerasProfesore>(objetoDto);
+                _dbContex.MatriculacionesCarrerasProfesores.Add(objeto);
                 //var profesorDto = _mapper.Map<ProfesoresDto>(objeto);
                 //_dbContex.Profesores.Add(profesorDto);
                 _dbContex.SaveChanges();
@@ -83,10 +85,6 @@ namespace SisacadFinal.Controllers
 
 
         }
-
-
-
-
 
 
 

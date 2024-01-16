@@ -20,4 +20,6 @@ public partial class Estudiante
     public DateTime? FechaCreacion { get; set; }
 
     public virtual ICollection<Matriculacione> Matriculaciones { get; set; } = new List<Matriculacione>();
+
+    public virtual ICollection<MatriculacionesCarrerasEstudiante> MatriculacionesCarrerasEstudiantes { get; set; } = new List<MatriculacionesCarrerasEstudiante>();
 }
