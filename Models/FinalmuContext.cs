@@ -37,9 +37,8 @@ public partial class FinalmuContext : DbContext
 
     public virtual DbSet<Profesore> Profesores { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=FINALMU;Trusted_Connection=True;TrustServerCertificate=True;");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -166,32 +165,32 @@ public partial class FinalmuContext : DbContext
 
         modelBuilder.Entity<MatriculacionesCarrerasEstudiante>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.MaCarreEstId).HasName("PK__Matricul__171D74B0B5D2C990");
 
             entity.Property(e => e.CarreraId).HasColumnName("CarreraID");
             entity.Property(e => e.EstudianteId).HasColumnName("EstudianteID");
 
-            entity.HasOne(d => d.Carrera).WithMany()
+            entity.HasOne(d => d.Carrera).WithMany(p => p.MatriculacionesCarrerasEstudiantes)
                 .HasForeignKey(d => d.CarreraId)
                 .HasConstraintName("FK__Matricula__Carre__571DF1D5");
 
-            entity.HasOne(d => d.Estudiante).WithMany()
+            entity.HasOne(d => d.Estudiante).WithMany(p => p.MatriculacionesCarrerasEstudiantes)
                 .HasForeignKey(d => d.EstudianteId)
                 .HasConstraintName("FK__Matricula__Estud__5629CD9C");
         });
 
         modelBuilder.Entity<MatriculacionesCarrerasProfesore>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.MaCarreProId).HasName("PK__Matricul__37FB4A5463285F63");
 
             entity.Property(e => e.CarreraId).HasColumnName("CarreraID");
             entity.Property(e => e.ProfesorId).HasColumnName("ProfesorID");
 
-            entity.HasOne(d => d.Carrera).WithMany()
+            entity.HasOne(d => d.Carrera).WithMany(p => p.MatriculacionesCarrerasProfesores)
                 .HasForeignKey(d => d.CarreraId)
                 .HasConstraintName("FK__Matricula__Carre__59FA5E80");
 
-            entity.HasOne(d => d.Profesor).WithMany()
+            entity.HasOne(d => d.Profesor).WithMany(p => p.MatriculacionesCarrerasProfesores)
                 .HasForeignKey(d => d.ProfesorId)
                 .HasConstraintName("FK__Matricula__Profe__59063A47");
         });

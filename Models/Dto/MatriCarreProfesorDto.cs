@@ -1,11 +1,9 @@
 ﻿namespace SisacadFinal.Models.Dto
 {
-    public class MatriCarreraEstDto
+    public class MatriCarreProfesorDto
     {
-        public int? EstudianteId { get; set; }
+        public int? ProfesorId { get; set; }
 
         public int? CarreraId { get; set; }
-
-
     }
 }
