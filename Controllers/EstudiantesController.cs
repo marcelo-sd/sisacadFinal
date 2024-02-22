@@ -46,6 +46,22 @@ namespace SisacadFinal.Controllers
             return nombresMaterias;
         }
 
+        // GET: api/obtenerCarrerasDEstudiante/{id}
+        [HttpGet("{id}/carreras", Name = "obtenerCarrerasDEstudiante")]
+        public async Task<ActionResult<IEnumerable<string>>> GetNombresCarreras(int id)
+        {
+            var nombresCarreras = await _dbContex.MatriculacionesCarrerasEstudiantes
+                .Where(m => m.EstudianteId == id)
+                .Select(m => m.Carrera.Nombre)
+                .ToListAsync();
+
+            if (!nombresCarreras.Any())
+            {
+                return NotFound();
+            }
+
+            return nombresCarreras;
+        }
 
 
 
