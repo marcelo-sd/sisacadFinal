@@ -47,6 +47,7 @@ namespace SisacadFinal.Controllers
         }
 
         // GET: api/obtenerCarrerasDEstudiante/{id}
+        // el problema que tuve aqui es sobre el nombre que se parece al metodo de arriba{Id} anbos usaban este parametro
         [HttpGet("{id}/carreras", Name = "obtenerCarrerasDEstudiante")]
         public async Task<ActionResult<IEnumerable<string>>> GetNombresCarreras(int id)
         {

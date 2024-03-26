@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using SisacadFinal.Models;
 using SisacadFinal.Profiles;
 
@@ -16,6 +17,12 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.InstanceName = "My Redis Instance";
+    options.Configuration ="localhost:6379";
+});
 
 
 var MisReglasCords = "ReglasCors";

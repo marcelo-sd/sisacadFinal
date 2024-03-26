@@ -18,7 +18,13 @@ C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Mic
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Identity.Client.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
@@ -31,6 +37,9 @@ C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Mic
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\StackExchange.Redis.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\diazs\Desktop\proyectos-c#\c#-vstudio\SisacadFinal\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
