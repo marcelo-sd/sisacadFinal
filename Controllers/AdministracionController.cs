@@ -4,6 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using SisacadFinal.Models.Dto;
 using SisacadFinal.Models;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Text.Json.Serialization;
+using System.Net.Http.Json;
+using Newtonsoft.Json;
 
 namespace SisacadFinal.Controllers
 {
@@ -14,37 +20,68 @@ namespace SisacadFinal.Controllers
     {
         public readonly FinalmuContext _dbContex;
         private readonly IMapper _mapper;
+        private readonly IDistributedCache _cache;
 
-        public AdministracionController(FinalmuContext _context, IMapper mapper)
+        public AdministracionController(FinalmuContext _context, IMapper mapper,IDistributedCache cache)
         {
             _dbContex = _context ?? throw new ArgumentNullException();
             _mapper = mapper;
+            _cache = cache;
 
         }
 
 
+        //enn esta consulata vamos a implementar cache
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [Route("ListaAdm")]
-        public IActionResult ListaP()
-        {
+        public async Task<IActionResult> ListaP()
+        //task es una clase, que reprecenta una operacion asincrona, Tasl<T> es su tipo generico, recordar que si no devuelve nada solo podes usar Task
+        //IActionResult es una interfaz que representa el resultado de una operacion,Puede ser cualquier cosa que implemente IActionResult, como ViewResult, JsonResult, ContentResult, etc.
+        { 
+            string? respuesta = await _cache.GetStringAsync("MiClave");
+        
+            // Mueve la declaración de la lista fuera del bloque if
             List<AdministracionDto> li = new List<AdministracionDto>();
-            try
+            //bloque if para verificar si "respuesta" tiene algun valor
+            if (respuesta == null)
             {
 
+               
+                try
+                {
 
-                var administradores = _dbContex.Administracions.ToList();
-                li = _mapper.Map<List<AdministracionDto>>(administradores);
-                return StatusCode(StatusCodes.Status200OK, new { message = "ok", response = li });
+
+                 
+                    var administradores =await _dbContex.Administracions.ToListAsync();
+                    respuesta = JsonConvert.SerializeObject(administradores);
+                    // Convierte tu lista a un string JSON antes de guardarla en el caché
+                    await _cache.SetStringAsync("MiClave", respuesta, new DistributedCacheEntryOptions
+                    {
+                        AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
+                        //aqui configuro  el tiempo que va a durar la respuesta en el cache
+                    });
+                    //aqui estoy guardando en el cache a administradores con el metodo SetStringAsinc
+
+
+                    li = _mapper.Map<List<AdministracionDto>>(administradores);
+                 
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                return BadRequest(ex.Message);
+                li = JsonConvert.DeserializeObject<List<AdministracionDto>>(respuesta);
             }
 
-
+            return StatusCode(StatusCodes.Status200OK, new { message = "ok", response = li });
         }
+
+
 
         [HttpGet]
         [ProducesResponseType(200)]
