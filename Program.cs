@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using SisacadFinal.Models;
 using SisacadFinal.Profiles;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.Identity.Web;
 using SisacadFinal;
 using Microsoft.AspNetCore.Authorization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<FinalmuContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSql")));
@@ -51,13 +53,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddStackExchangeRedisCache(options =>
 {
+
     options.InstanceName = "cacheFirstDD";
     options.Configuration = builder.Configuration.GetConnectionString("Redis");
 });
+
 
 var MisReglasCords = "ReglasCors";
 builder.Services.AddCors(opt =>
@@ -70,14 +75,18 @@ builder.Services.AddCors(opt =>
 
 var app = builder.Build();
 
+
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
 app.UseCors(MisReglasCords);
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();
