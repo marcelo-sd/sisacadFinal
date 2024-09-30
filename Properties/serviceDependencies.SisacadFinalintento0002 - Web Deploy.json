@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/SisacadFinalapi2DoIntento/apis/SisacadFinal2doIntento",
+      "type": "apis.azure"
+    }
+  }
+}

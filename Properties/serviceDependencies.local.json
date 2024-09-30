@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "apis1": {
+      "ignored": "true",
+      "type": "apis"
+    },
+    "identityapp1": {
+      "type": "identityapp.default",
+      "dynamicId": null
+    }
+  }
+}

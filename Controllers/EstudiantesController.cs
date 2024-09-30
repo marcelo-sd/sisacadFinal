@@ -5,13 +5,16 @@ using SisacadFinal.Models;
 using Microsoft.AspNetCore.Cors;
 using SisacadFinal.Models.Dto;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SisacadFinal.Controllers
 {
 
     [EnableCors("ReglasCors")]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+  //  [AllowAnonymous]
     public class EstudiantesController : ControllerBase
     {
         public readonly FinalmuContext _dbContex;
